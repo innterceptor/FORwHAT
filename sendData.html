@@ -3,13 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Send Data to NodeMCU</title>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            document.getElementById("latitude").value = latitude;
+            document.getElementById("longitude").value = longitude;
+        }
+    </script>
 </head>
 <body>
     <h2>Send Data to NodeMCU</h2>
     <form action="http://192.168.0.100/dataFetch" method="post">
         <label for="data">Data:</label>
         <input type="text" id="data" name="data">
+        <br>
+        <label for="latitude">Latitude:</label>
+        <input type="text" id="latitude" name="latitude" readonly>
+        <br>
+        <label for="longitude">Longitude:</label>
+        <input type="text" id="longitude" name="longitude" readonly>
+        <br>
+        <button type="button" onclick="getLocation()">Get Location</button>
+        <br>
         <input type="submit" value="Send">
     </form>
 </body>
