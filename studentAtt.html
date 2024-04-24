@@ -83,5 +83,22 @@
             <input type="submit" value="Send">
         </form>
     </div>
+
+    <script>
+        // Get current date and time
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = ('0' + (now.getMonth() + 1)).slice(-2);
+        var day = ('0' + now.getDate()).slice(-2);
+        var dateStr = year + '-' + month + '-' + day;
+
+        var hours = ('0' + now.getHours()).slice(-2);
+        var minutes = ('0' + now.getMinutes()).slice(-2);
+        var timeStr = hours + ':' + minutes;
+
+        // Set date and time input values
+        document.getElementById('date').value = dateStr;
+        document.getElementById('time').value = timeStr;
+    </script>
 </body>
 </html>
